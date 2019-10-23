@@ -36,7 +36,8 @@ class Hotel extends Component {
 
     var service_id = "default_service";
     var template_id = "hotelplex_book_room";
-    emailjs.send(service_id, template_id, template_params);
+    var user_id = "user_n88zEBStQCYeGEbRxw2xl";
+    emailjs.send(service_id, template_id, template_params, user_id);
   };
 
   render() {
