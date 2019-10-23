@@ -27,7 +27,6 @@ class Hotel extends Component {
 
   sendMail = () => {
     var template_params = {
-      // send_to: "shahrukhanwer92@gmail.com",
       hotel_name: this.props.hotel[0].hotel_name,
       hotel_location: this.props.hotel[0].location,
       customer_email: "shahrukh", //it will come from login reducer state
@@ -37,7 +36,15 @@ class Hotel extends Component {
     var service_id = "default_service";
     var template_id = "hotelplex_book_room";
     var user_id = "user_n88zEBStQCYeGEbRxw2xl";
-    emailjs.send(service_id, template_id, template_params, user_id);
+    emailjs.send(service_id, template_id, template_params, user_id).then(
+      function(response) {
+        alert("Success!");
+        console.log("SUCCESS!", response.status, response.text);
+      },
+      function(error) {
+        console.log("FAILED...", error);
+      }
+    );
   };
 
   render() {
