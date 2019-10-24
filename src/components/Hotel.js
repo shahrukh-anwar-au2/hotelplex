@@ -29,7 +29,7 @@ class Hotel extends Component {
     var template_params = {
       hotel_name: this.props.hotel[0].hotel_name,
       hotel_location: this.props.hotel[0].location,
-      customer_email: "shahrukh", //it will come from login reducer state
+      customer_email: this.props.customerName,
       room: this.state.room
     };
 
@@ -332,7 +332,8 @@ class Hotel extends Component {
 }
 const mapStateToProps = state => {
   return {
-    hotel: state.hotelReducer.hotel
+    hotel: state.hotelReducer.hotel,
+    customerName: JSON.parse(state.loginReducer.loggedIn).name
   };
 };
 export default connect(mapStateToProps)(Hotel);
