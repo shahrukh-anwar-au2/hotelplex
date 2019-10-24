@@ -9,7 +9,7 @@ function Navbar(props) {
   return (
     <nav id="nav" className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link className="navbar-brand" to={"/home"}>
-        <img src={logo} style={{ height: "30px", width: "30px" }} alt="logo"/>
+        <img src={logo} style={{ height: "30px", width: "30px" }} alt="logo" />
         HotelPlex
       </Link>
       <button
@@ -61,7 +61,11 @@ window.onscroll = function() {
 
 const mapDisptachToProps = dispatch => {
   return {
-    logout: () => dispatch(logoutUser())
+    logout: () => {
+      localStorage.removeItem("user");
+      localStorage.removeItem("fbUser");
+      dispatch(logoutUser());
+    }
   };
 };
 
